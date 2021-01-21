@@ -1,5 +1,3 @@
-config.js
-client/src/config.js
 client/src/.eslintrc.js
 .DS_Store
 node_modules/
