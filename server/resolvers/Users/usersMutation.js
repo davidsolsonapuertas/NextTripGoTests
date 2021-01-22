@@ -205,8 +205,8 @@ module.exports = {
 
     setProfilePicture: async (_, { file }, context) => {
       const user = checkAuth(context);
-      const { createReadStream, filename } = await file;
-      const stream = createReadStream();
+      const { stream, filename } = await file;
+      // const stream = createReadStream();
       const pictureName = user.id + '.' + filename.split('.').slice(-1);
       const path2 = path.join(__dirname, '../../public/images', pictureName);
 
@@ -246,8 +246,8 @@ module.exports = {
     },
     uploadFile: async (_, { file }, context) => {
       const user = checkAuth(context);
-      const { createReadStream, filename } = await file;
-      const stream = createReadStream();
+      const { stream, filename } = await file;
+      // const stream = createReadStream();
       const pictureName = Date.now() + '.' + filename.split('.').slice(-1);
       const path2 = path.join(__dirname, '../../public/draft', pictureName);
 
