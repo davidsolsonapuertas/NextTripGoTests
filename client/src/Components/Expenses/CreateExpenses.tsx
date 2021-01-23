@@ -7,7 +7,7 @@ import { currencies } from '../../assets/Currencies';
 import ValidateAmount from './validateAmount';
 import { Expense } from '../../Interfaces/Trip';
 
-interface Expenses extends Array<Expense> {}
+interface Expenses extends Array<Expense> { }
 
 interface IProps {
   expenses: Expenses;

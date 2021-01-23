@@ -17,6 +17,7 @@ function RandomVideo() {
           },
         }
       );
+      // console.log('videodata', data?.data?.videos);
       setVideos(data?.data?.videos);
     } catch (e) {
       console.log(e);
@@ -31,10 +32,12 @@ function RandomVideo() {
     getVideos();
   }, []);
 
+  console.log(videos)
+  console.log(videos?.length > 0)
   return (
-    <div>
+    <div data-testid='random-video'>
       {videos?.length > 0 && (
-        <video
+        <video data-testid='velement'
           src={videos[getRandomInt()].video_files[0].link}
           autoPlay
           loop
