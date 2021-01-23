@@ -8,6 +8,7 @@ export const useForm = (callback: any, initialState = {}) => {
   };
 
   const onSubmit = (e: React.SyntheticEvent) => {
+    console.log('onSubmit clicked')
     e.preventDefault();
     callback();
   };

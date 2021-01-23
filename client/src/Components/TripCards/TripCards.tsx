@@ -35,8 +35,11 @@ function TripCards({ trips, time, mode }: IProps) {
             return <TripCardUser key={index} trip={trip} />;
           } else if (mode === 'Me') {
             return <TripCardMe key={index} trip={trip} />;
+          } else {
+            return null;
           }
-        })}
+        })
+      }
     </div>
   );
 }
