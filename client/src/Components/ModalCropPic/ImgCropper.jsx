@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
@@ -7,9 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { useMutation } from '@apollo/client';
 
 import './cropimage.css';
-import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import { SET_PROFILE_PICTURE } from '../../services/Users/UsersAccessMutation';
-import { AuthContext } from '../../Context/Auth';
 import getCroppedImg from './CropImage.jsx';
 import { styles } from './Styles.js';
 
@@ -18,9 +16,7 @@ function ImgCropper({ classes, imageLink }) {
   const [rotation, setRotation] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [croppedImage, setCroppedImage] = useState(null);
-
-  const { user } = useContext(AuthContext);
+  const [, setCroppedImage] = useState(null);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -42,11 +38,12 @@ function ImgCropper({ classes, imageLink }) {
     } catch (e) {
       console.error(e);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [croppedAreaPixels, rotation]);
 
-  const onClose = useCallback(() => {
-    setCroppedImage(null);
-  }, []);
+  // const onClose = useCallback(() => {
+  //   setCroppedImage(null);
+  // }, []);
 
   return (
     <div>

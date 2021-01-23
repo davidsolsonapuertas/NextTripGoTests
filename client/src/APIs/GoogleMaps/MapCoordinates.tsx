@@ -17,6 +17,7 @@ const MapCoordinates = ({ latitude, longitude, style }: IProps) => {
     googleMapScript.addEventListener('load', () => {
       initMap();
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const myLatLng = { lat: parseFloat(latitude), lng: parseFloat(longitude) };

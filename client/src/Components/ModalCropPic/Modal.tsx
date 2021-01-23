@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { Button, Modal as ProfileModal } from 'react-bootstrap';
+import React from 'react';
+import { Modal as ProfileModal } from 'react-bootstrap';
 
 import StyledDemo from './ImgCropper';
 

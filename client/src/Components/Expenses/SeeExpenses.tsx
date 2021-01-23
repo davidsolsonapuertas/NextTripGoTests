@@ -53,6 +53,7 @@ const SeeExpenses: FunctionComponent<IProps> = ({ expenses }) => {
 
   useMemo(() => {
     currencies && changeCurrency(currencies[0]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -70,6 +71,7 @@ const SeeExpenses: FunctionComponent<IProps> = ({ expenses }) => {
                   changeCurrency(currency);
                 }}
                 type="button"
+                // eslint-disable-next-line no-useless-concat
                 className={'btn rounded-0 ' + 'btn-' + variant[index]}
               >
                 {currency}

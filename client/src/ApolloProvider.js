@@ -2,7 +2,6 @@ import React from 'react';
 import App from './App';
 import { InMemoryCache, createHttpLink, ApolloClient, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import { createUploadLink } from 'apollo-upload-client';
 
 const authLink = setContext(() => {
   const token = localStorage.getItem('jwtToken');

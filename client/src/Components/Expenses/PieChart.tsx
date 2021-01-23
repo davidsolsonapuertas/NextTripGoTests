@@ -15,6 +15,7 @@ function PieChart({ expenses }: IProps) {
   const types: string[] = [];
 
   expenses &&
+    // eslint-disable-next-line array-callback-return
     expenses.map((expense: any) => {
       types.push(expense.type);
       values.push(expense.amount);
@@ -22,6 +23,7 @@ function PieChart({ expenses }: IProps) {
 
   useEffect(() => {
     var ctx = 'myChart';
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     var myPieChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
@@ -51,6 +53,7 @@ function PieChart({ expenses }: IProps) {
         cutoutPercentage: 80,
       },
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <canvas id="myChart"></canvas>;
