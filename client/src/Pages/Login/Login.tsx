@@ -48,7 +48,7 @@ function Login() {
                   <div className="text-center">
                     <h1 className="h4 text-gray-900 mb-4">Welcome back!</h1>
                   </div>
-                  <form className="user" onSubmit={onSubmit} noValidate>
+                  <form data-testid='submit-form' className="user" onSubmit={onSubmit} noValidate>
                     <div className="form-group">
                       <input
                         type="text"
@@ -89,7 +89,6 @@ function Login() {
                     <button
                       type="submit"
                       className="btn btn-primary btn-user btn-block"
-                      onClick={onSubmit}
                     >
                       Login ↪
                     </button>

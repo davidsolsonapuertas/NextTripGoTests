@@ -5,6 +5,19 @@ import Login from './Login.tsx';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import App from '../../App.tsx';
+import { useForm } from '../../util/Hooks.tsx';
+
+jest.mock('../../util/Hooks.tsx', () => {
+  let values = {};
+
+  const onSubmit = jest.fn((e) => e);
+  const onChange = (data) => { values = data };
+  return { useForm: () => {
+    return { onSubmit, onChange, values, }
+  }}
+})
+
+window.HTMLFormElement.prototype.submit = () => {};
 
 describe('Login', () => {
   const history = createMemoryHistory();
@@ -25,20 +38,15 @@ describe('Login', () => {
     const history = createMemoryHistory();
     const userName = 'username';
     const password = 'password';
-    const handleSubmit = jest.fn();
-    const leftClick = { button: 0 };
+    const { onSubmit } = useForm();
 
-    const { getByPlaceholderText, getByText } = render(<Router history={history}><MockedProvider><Login onSubmit={handleSubmit} /></MockedProvider></Router>);
+    const { getByPlaceholderText, getByTestId } = render(<Router history={history}><MockedProvider><Login /></MockedProvider></Router>);
 
     fireEvent.change(getByPlaceholderText(/username/i), userName);
     fireEvent.change(getByPlaceholderText(/password/i), password);
 
-    fireEvent.click(getByText(/Login/i), leftClick);
-  
-    expect(handleSubmit).toHaveBeenCalledTimes(1)
-    expect(handleSubmit).toHaveBeenCalledWith({
-      userName,
-      password
-    });
+    // fireEvent.click(getByText(/Login/i), leftClick);
+    fireEvent.submit(getByTestId('submit-form'));
+    expect(onSubmit).toHaveBeenCalledTimes(1);
   })
 })
