@@ -31,7 +31,6 @@ module.exports = {
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
 
-      console.log('server connected')
       if (!valid) {
         throw new UserInputError('Errors', { errors });
       }
