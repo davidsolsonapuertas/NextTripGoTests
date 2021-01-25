@@ -16,7 +16,7 @@ function PieChart({ expenses }: IProps) {
 
   expenses &&
     // eslint-disable-next-line array-callback-return
-    expenses.map((expense: any) => {
+    expenses.map((expense: {type: string, amount: number}) => { //* changed expense type
       types.push(expense.type);
       values.push(expense.amount);
     });

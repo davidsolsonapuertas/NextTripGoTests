@@ -17,7 +17,7 @@ jest.mock('../../util/Hooks.tsx', () => {
   }}
 })
 
-window.HTMLFormElement.prototype.submit = () => {};
+// window.HTMLFormElement.prototype.submit = () => {};
 
 describe('Login', () => {
   const history = createMemoryHistory();

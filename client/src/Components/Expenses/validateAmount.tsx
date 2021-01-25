@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 
-function ValidateAmount({ amount, setAmount, index, expenses, errors }: any) {
+
+function ValidateAmount({ amount, setAmount, index, expenses, errors }: { amount: string[], setAmount: Dispatch<SetStateAction<string[]>>, index: number, expenses: any, errors: {expensestype: string}}) {
   const formatNumber = (n: string) => {
     return n.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  const formatCurrency = (index: any, n: string, blur?: any) => {
+  const formatCurrency = (index: number, n: string, blur?: string) => { //* added types for index & blur
     if (n.indexOf('.') >= 0) {
       let decimal_pos = n.indexOf('.');
 

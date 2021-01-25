@@ -12,11 +12,13 @@ interface Expenses extends Array<Expense> { }
 interface IProps {
   expenses: Expenses;
   setExpenses: Dispatch<SetStateAction<Expenses>>;
-  errors: any;
+  errors: {
+    expensestype: string
+  }; //* changed errors type
 }
 
 function ExpensesComponent({ expenses, setExpenses, errors }: IProps) {
-  const [amount, setAmount]: any = useState(['0']);
+  const [amount, setAmount] = useState<string[]>(['0']); //* changed that line
 
   const handleAddFields = () => {
     const values = [...expenses];
@@ -32,7 +34,7 @@ function ExpensesComponent({ expenses, setExpenses, errors }: IProps) {
     setExpenses(values);
   };
 
-  const handleInputChange = (index: number, e?: any) => {
+  const handleInputChange = (index: number, e?: {target: {name: string, value: string}}) => { //* changed target type 
     const values = [...expenses];
     if (e?.target.name === 'type') {
       values[index].type = e.target.value;

@@ -15,8 +15,8 @@ interface Expenses extends Array<Expense> {}
 
 const SeeExpenses: FunctionComponent<IProps> = ({ expenses }) => {
   const expensesCopy = expenses.map((el) => ({ ...el }));
-  const [changedExpenses, setChangedExpenses]: any = useState(expensesCopy);
-  const [totalExpenses, setTotalExpenses]: any = useState(0);
+  const [changedExpenses, setChangedExpenses]= useState<Expense[]>(expensesCopy);
+  const [totalExpenses, setTotalExpenses]= useState<number>(0);
 
   const currencies: string[] = [];
 

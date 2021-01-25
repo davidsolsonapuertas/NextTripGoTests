@@ -21,6 +21,5 @@ describe('Register', () => {
     render(<MockedProvider><App history={history} /></MockedProvider>);
     await fireEvent.click(screen.getByText(/Create/i), leftClick);
     expect(screen.getByText('Password must not be empty')).toBeInTheDocument();
-
   })
 })
