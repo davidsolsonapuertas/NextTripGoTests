@@ -55,7 +55,7 @@ describe('RandomVideo', () => {
   expect(element).toBeInTheDocument();
 
 
-
+//? note that we manage to write a test to check if the call to the API was made, but it would imply that we mock 30 video files
 
   // const { container } = render(<RandomVideo />);
 

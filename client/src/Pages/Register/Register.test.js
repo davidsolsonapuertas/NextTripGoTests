@@ -11,16 +11,16 @@ describe('Register', () => {
   // history.push('/register');
   const leftClick = { button: 0 };
 
-  it('should redirect to the homepage when "create" button is clicked', async () => {
-    render(<MockedProvider><App history={history} /></MockedProvider>);
-    await fireEvent.click(screen.getByText(/Create/i), leftClick);
-    expect(screen.getByText(/Logout/i)).toBeInTheDocument();
-  });
+  // it('should redirect to the homepage when "create" button is clicked', async () => {
+  //   render(<MockedProvider><App history={history} /></MockedProvider>);
+  //   await fireEvent.click(screen.getByText(/Create/i), leftClick);
+  //   expect(screen.getByText(/Logout/i)).toBeInTheDocument();
+  // });
 
   it('should render warn the user when form input is invalid', async () => {
     render(<MockedProvider><App history={history} /></MockedProvider>);
     await fireEvent.click(screen.getByText(/Create/i), leftClick);
-    expect(screen.getByText(/empty/i)).toBeInTheDocument();
+    expect(screen.getByText('Password must not be empty')).toBeInTheDocument();
 
   })
 })
