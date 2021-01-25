@@ -7,7 +7,7 @@ import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import Search from '../../Pages/Search/Search';
 
 interface IUser {
-  user: any;
+  user: {id: number} | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }
@@ -18,7 +18,7 @@ interface LoggedUser {
   token: string;
 }
 
-function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: any) {
+function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: {selectedFriends: string[], setSelectedFriends: any}) {
   const { user } = useContext<IUser>(AuthContext);
   const [suggestionValue, setSuggestionValue] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: any) {
   }, [suggestionValue, setSelectedFriends]);
 
   const { data: dataLoggedUser } = useQuery(GET_LOGGED_USER, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
   });
 
   const loggedUserFriends = dataLoggedUser?.getLoggedUser?.friends;

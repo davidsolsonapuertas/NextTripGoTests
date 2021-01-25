@@ -1,6 +1,7 @@
 import React, { useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
 import { client } from '../ApolloProvider';
+import { IUser } from '../Interfaces/User';
 
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
@@ -36,7 +37,7 @@ if (localStorage.getItem('jwtToken')) {
   }
 }
 
-const AuthContext = createContext({
+const AuthContext = createContext<IUser>({
   user: null,
   login: (userData: User) => {},
   logout: () => {},

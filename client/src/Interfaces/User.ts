@@ -22,3 +22,15 @@ export interface Destination {
   latitude: number;
   longitude: number;
 }
+
+export interface LoggedUser {
+  username: string;
+  password: string;
+  token: string;
+}
+
+export interface IUser {
+  user: {id: number} | null;
+  login: (userData: LoggedUser) => void;
+  logout: () => void;
+}
