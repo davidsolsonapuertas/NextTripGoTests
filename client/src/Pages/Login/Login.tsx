@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, FormEventHandler } from 'react';
 import { useMutation } from '@apollo/client';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -7,13 +7,18 @@ import { LOGIN_USER } from '../../services/Users/UsersAccessMutation';
 import { AuthContext } from '../../Context/Auth';
 import { useForm } from '../../util/Hooks';
 
+interface IError {
+  username?: string, 
+  password?: string
+}
+
 function Login() {
   let history = useHistory();
   const context = useContext(AuthContext);
 
-  const [errors, setErrors]: any = useState({});
+  const [errors, setErrors] = useState<IError>({});
 
-  const { onChange, onSubmit, values }: any = useForm(loginUserCallback, {
+  const { onChange, onSubmit, values }: { onChange: FormEventHandler<Element>, onSubmit: FormEventHandler<Element>, values: {username?: string, password?: string}} = useForm(loginUserCallback, {
     username: '',
     password: '',
   });

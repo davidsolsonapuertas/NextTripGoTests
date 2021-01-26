@@ -8,7 +8,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 import Topbar from '../../Components/Topbar/Topbar';
 
 interface IUser {
-  user: any;
+  user: {id: string} | null;
   login: (userData: User) => void;
   logout: () => void;
 }
@@ -19,9 +19,15 @@ interface User {
   token: string;
 }
 
-function PrivateRoute({ children, ...rest }: any) {
+interface IProps {
+  children: JSX.Element,
+  exact?: boolean,
+  path: string
+}
+
+function PrivateRoute({ children, ...rest }: IProps) {
   const { user } = useContext<IUser>(AuthContext);
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar]= useState<boolean>(true);
 
   return (
     <Route

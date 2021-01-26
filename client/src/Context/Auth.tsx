@@ -6,29 +6,46 @@ import { IUser } from '../Interfaces/User';
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
-export interface User {
+export interface LoggedUser {
   username: string;
   password: string;
   token: string;
+
 }
 
 interface Login {
   type: typeof LOGIN;
-  payload: User;
+  payload: LoggedUser;
 }
 
 interface Logout {
   type: typeof LOGOUT;
 }
 
+interface User {
+  exp: number, 
+  iat: number,
+  email: string,
+  id: string,
+  username: string
+}
+
+interface State {
+  user: User | null
+}
+
+interface IAuthProvider {
+  children: JSX.Element[] | JSX.Element
+}
+
 type ActionTypes = Login | Logout;
 
-const initialState = {
-  user: null,
+const initialState: State = {
+user: null
 };
 
 if (localStorage.getItem('jwtToken')) {
-  const decodedToken: any = jwtDecode(localStorage.getItem('jwtToken')!);
+  const decodedToken: User = jwtDecode(localStorage.getItem('jwtToken')!);
 
   if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem('jwtToken');
@@ -39,7 +56,7 @@ if (localStorage.getItem('jwtToken')) {
 
 const AuthContext = createContext<IUser>({
   user: null,
-  login: (userData: User) => {},
+  login: (userData: LoggedUser) => {},
   logout: () => {},
 });
 
@@ -60,10 +77,10 @@ function authReducer(state: object, action: ActionTypes) {
   }
 }
 
-function AuthProvider(props: any) {
+function AuthProvider(props: IAuthProvider) {
   const [state, dispatch]: any = useReducer(authReducer, initialState);
-
-  function login(userData: User) {
+  
+  function login(userData: LoggedUser) {
     localStorage.setItem('jwtToken', userData.token);
     dispatch({
       type: 'LOGIN',
