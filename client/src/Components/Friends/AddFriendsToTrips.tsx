@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, Dispatch, SetStateAction } from 'react';
 import { useQuery } from '@apollo/client';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -18,7 +18,7 @@ interface LoggedUser {
   token: string;
 }
 
-function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: {selectedFriends: string[], setSelectedFriends: any}) {
+function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: {selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>>}) {
   const { user } = useContext<IUser>(AuthContext);
   const [suggestionValue, setSuggestionValue] = useState<string | null>(null);
 
