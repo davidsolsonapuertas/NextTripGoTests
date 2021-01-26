@@ -8,22 +8,39 @@ import DestinationPhotos from '../../../APIs/Pexels/GetPhoto/GetPhoto';
 import Daterangepicker from '../../../Components/DateRangePicker/DateRangePicker';
 import ExpensesComponent from '../../../Components/Expenses/CreateExpenses';
 import AddFriendsToTrips from '../../../Components/Friends/AddFriendsToTrips';
+import { Expense, } from '../../../Interfaces/Trip'
+
+
+interface IErrors {
+  expensestype: string;
+  destination?: {
+    formattedAddress: string[],
+    latitude: string[],
+    longitude: string[],
+  },
+}
+
+interface IRanges {
+  startDate?: Date;
+  endDate?: Date;
+}
+
 
 function CreateTrip() {
   let history = useHistory();
 
-  const [errors, setErrors]: any = useState({});
+  const [errors, setErrors] = useState<IErrors>({ expensestype: '' });
 
-  const [formattedAddress, setFormatedAddress]: any = useState(['', '', '']);
-  const [photo, setPhoto]: any = useState('');
-  const [expenses, setExpenses]: any = useState([]);
-  const [friends, setFriends]: any = useState([]);
-  const [dates, setDates]: any = useState({
+  const [formattedAddress, setFormatedAddress] = useState<string[]>(['', '', '']);
+  const [photo, setPhoto] = useState<string>('');
+  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [friends, setFriends] = useState<string[]>([]);
+  const [dates, setDates] = useState<object>({
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection',
   });
-  const [ranges, setRanges]: any = useState({
+  const [ranges, setRanges] = useState<IRanges>({
     startDate: new Date(),
     endDate: new Date(),
   });

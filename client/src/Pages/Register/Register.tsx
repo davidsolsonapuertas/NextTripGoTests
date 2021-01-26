@@ -8,12 +8,22 @@ import SearchLocationInput from '../../APIs/GoogleMaps/SearchLocationInput/Searc
 import { useForm } from '../../util/Hooks';
 import { AuthContext } from '../../Context/Auth';
 
-function Register(props: any) {
+interface IErrors {
+  firstname?: string,
+  lastname?: string,
+  username?: string,
+  email?: string,
+  password?: string,
+  confirmPassword?: string,
+}
+
+function Register() {
   let history = useHistory();
-  const [errors, setErrors]: any = useState({});
-  const [formattedAddress, setFormatedAddress]: any = useState('');
+  const [errors, setErrors] = useState<IErrors>({});
+  const [formattedAddress, setFormatedAddress] = useState<string>('');
 
   const context = useContext(AuthContext);
+
 
   const { onChange, onSubmit, values }: any = useForm(registerUser, {
     firstname: '',

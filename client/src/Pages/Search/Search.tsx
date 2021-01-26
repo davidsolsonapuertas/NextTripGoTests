@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 import Autosuggest from 'react-autosuggest';
 
 import './Search.css';
@@ -23,7 +23,12 @@ interface Friends {
   createdAt: String;
 }
 
-function Search({ dataToSearch, setSuggestionValue }: any) {
+interface IProps {
+  dataToSearch: [];
+  setSuggestionValue: Dispatch<SetStateAction<string>>;
+}
+
+function Search({ dataToSearch, setSuggestionValue }: IProps) {
   const [selected, setSelected] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
@@ -32,7 +37,7 @@ function Search({ dataToSearch, setSuggestionValue }: any) {
   );
 
   const getSuggestions = (value: string): string[] => {
-    return lowerCasedUsernames?.filter((usernames: String) =>
+    return lowerCasedUsernames?.filter((usernames: string) =>
       usernames.startsWith(value.trim().toLowerCase())
     );
   };

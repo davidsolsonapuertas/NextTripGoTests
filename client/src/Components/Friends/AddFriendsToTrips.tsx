@@ -7,7 +7,11 @@ import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import Search from '../../Pages/Search/Search';
 
 interface IUser {
-  user: {id: number} | null;
+  user: {
+    id: number,
+    username: string,
+    profilePic: string
+  } | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }
@@ -18,9 +22,9 @@ interface LoggedUser {
   token: string;
 }
 
-function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: {selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>>}) {
+function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: { selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>> }) {
   const { user } = useContext<IUser>(AuthContext);
-  const [suggestionValue, setSuggestionValue] = useState<string | null>(null);
+  const [suggestionValue, setSuggestionValue] = useState<string>('');
 
   useMemo(() => {
     if (suggestionValue !== null) {

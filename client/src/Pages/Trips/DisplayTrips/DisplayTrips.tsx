@@ -9,7 +9,9 @@ import { AuthContext } from '../../../Context/Auth';
 import { FETCH_TRIPS_BY_USERNAME } from '../../../services/Trips/TripsQuery';
 
 interface IUser {
-  user: any;
+  user?: {
+    id: string
+  };
   login: (userData: User) => void;
   logout: () => void;
 }
@@ -21,12 +23,12 @@ interface User {
 }
 
 function DisplayTrips() {
-  const { user } = useContext<IUser>(AuthContext);
+  const { user } = useContext<IUser>(AuthContext); //*ERROR!
   let { pathname, hash }: any = useLocation();
   console.log(hash);
 
   let { data } = useQuery(FETCH_TRIPS_BY_USERNAME, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
   });
 
   let trips = data?.getTripsByUsername;
@@ -51,21 +53,21 @@ function DisplayTrips() {
         hash === '#past' ? (
           <TripCards trips={trips} time={'past'} mode="My" />
         ) : (
-          <TripCards trips={trips} time={'upcoming'} mode="My" />
-        )
+            <TripCards trips={trips} time={'upcoming'} mode="My" />
+          )
       ) : (
-        <div className="d-flex w-100 mt-5 flex-column align-items-center justify-content-center">
-          <p className="mb-5">You don't have any trips.</p>
-          <Link to="/createTrip">
-            <button className="btn btn-primary btn-icon-split">
-              <span className="icon text-white-50">
-                <FlightTakeoffRoundedIcon />
-              </span>
-              <span className="text">Create trip</span>
-            </button>
-          </Link>
-        </div>
-      )}
+          <div className="d-flex w-100 mt-5 flex-column align-items-center justify-content-center">
+            <p className="mb-5">You don't have any trips.</p>
+            <Link to="/createTrip">
+              <button className="btn btn-primary btn-icon-split">
+                <span className="icon text-white-50">
+                  <FlightTakeoffRoundedIcon />
+                </span>
+                <span className="text">Create trip</span>
+              </button>
+            </Link>
+          </div>
+        )}
     </div>
   );
 }
