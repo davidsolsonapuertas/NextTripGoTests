@@ -5,7 +5,12 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 
 interface IProps {
-  item: any;
+  item: {
+    title: string;
+    path: string;
+    icon: JSX.Element;
+    subNav?: object[];
+  }
 }
 
 function SubMenu({ item }: IProps) {
@@ -30,24 +35,24 @@ function SubMenu({ item }: IProps) {
           </div>
         </div>
       ) : (
-        <Link
-          to={item.path}
-          className="submenu-link"
-          onClick={item.subNav && showSubnav}
-        >
-          <div>
-            {item.icon}
-            <span className="submenu-label">{item.title}</span>
-          </div>
-          <div className="icons">
-            {item.subNav && subnav ? (
-              <ArrowDropUpIcon />
-            ) : item.subNav ? (
-              <ArrowDropDownIcon />
-            ) : null}
-          </div>
-        </Link>
-      )}
+          <Link
+            to={item.path}
+            className="submenu-link"
+            onClick={item.subNav && showSubnav}
+          >
+            <div>
+              {item.icon}
+              <span className="submenu-label">{item.title}</span>
+            </div>
+            <div className="icons">
+              {item.subNav && subnav ? (
+                <ArrowDropUpIcon />
+              ) : item.subNav ? (
+                <ArrowDropDownIcon />
+              ) : null}
+            </div>
+          </Link>
+        )}
       {subnav && item.subNav && (
         <div className="bg-white mx-4 collapse-inner rounded">
           {item.subNav.map((item: any, index: number) => {

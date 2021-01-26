@@ -42,42 +42,42 @@ function ProfilePicture({ user }: IProps) {
               </div>
             </DropZone>
           ) : (
-            <DropZone>
-              <div>
-                <Avatar
-                  className={
-                    classes.profilePic + ' shadow-hover img userOwnPic'
-                  }
-                >
-                  {user?.username?.charAt(0).toUpperCase()}
-                </Avatar>
-              </div>
-            </DropZone>
-          )}
+              <DropZone>
+                <div>
+                  <Avatar
+                    className={
+                      classes.profilePic + ' shadow-hover img userOwnPic'
+                    }
+                  >
+                    {user?.username?.charAt(0).toUpperCase()}
+                  </Avatar>
+                </div>
+              </DropZone>
+            )}
         </div>
       ) : (
-        <div>
-          {user?.profilePic?.length > 1 ? (
-            <div>
-              <div className="profilepic ml-10 shadow-hover img">
-                <img
-                  width="300px"
-                  alt={user?.username}
-                  src={user?.profilePic}
-                />
+          <div>
+            {user?.profilePic?.length > 1 ? (
+              <div>
+                <div className="profilepic ml-10 shadow-hover img">
+                  <img
+                    width="300px"
+                    alt={user?.username}
+                    src={user?.profilePic}
+                  />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div>
-              <Avatar
-                className={classes.profilePic + ' ml-10 shadow-hover img'}
-              >
-                {user?.username?.charAt(0).toUpperCase()}
-              </Avatar>
-            </div>
-          )}
-        </div>
-      )}
+            ) : (
+                <div>
+                  <Avatar
+                    className={classes.profilePic + ' ml-10 shadow-hover img'}
+                  >
+                    {user?.username?.charAt(0).toUpperCase()}
+                  </Avatar>
+                </div>
+              )}
+          </div>
+        )}
     </div>
   );
 }
