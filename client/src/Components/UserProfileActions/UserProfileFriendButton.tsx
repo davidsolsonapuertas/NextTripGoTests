@@ -105,7 +105,7 @@ function UserProfileFriendButton({ userVisited, userVisiting }: IProps) {
       ) === 'undefined' &&
         userVisiting?.sentFriendRequests?.indexOf(userVisited?.id) === -1 &&
         userVisiting?.receivedFriendRequests?.indexOf(userVisited?.id) ===
-          -1 && (
+        -1 && (
           <Button onClick={sendFriendRequestCallback} variant="primary">
             Send friend request
           </Button>
@@ -138,10 +138,10 @@ function UserProfileFriendButton({ userVisited, userVisiting }: IProps) {
       {typeof userVisiting?.friends?.find(
         (friend: any) => friend?.id === userVisited?.id
       ) !== 'undefined' && (
-        <DropdownButton id="dropdown-basic-button" title="Friends">
-          <Dropdown.Item onClick={deleteFriendCallback}>Unfriend</Dropdown.Item>
-        </DropdownButton>
-      )}
+          <DropdownButton id="dropdown-basic-button" title="Friends">
+            <Dropdown.Item onClick={deleteFriendCallback}>Unfriend</Dropdown.Item>
+          </DropdownButton>
+        )}
     </div>
   );
 }

@@ -18,10 +18,10 @@ function UserProfile({ loggedUser }: IProps) {
         {loggedUser?.profilePic?.length > 0 ? (
           <Avatar alt={loggedUser?.username} src={loggedUser?.profilePic} />
         ) : (
-          <Avatar className={classes.sidebar}>
-            {loggedUser?.username?.charAt(0).toUpperCase()}
-          </Avatar>
-        )}
+            <Avatar className={classes.sidebar}>
+              {loggedUser?.username?.charAt(0).toUpperCase()}
+            </Avatar>
+          )}
       </Link>
     </div>
   );
