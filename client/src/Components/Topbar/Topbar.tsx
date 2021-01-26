@@ -15,14 +15,14 @@ import { FETCH_USERS, GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import { AuthContext } from '../../Context/Auth';
 import Search from '../../Pages/Search/Search';
 import FriendRequestDropdown from './FriendRequestDropdown';
-import UserProfile from './UserProfile';
+import I from './UserProfile';
 
 interface IProps {
   setSidebar: Dispatch<SetStateAction<boolean>>;
 }
 
 interface IUser {
-  user: any;
+  user: { id: number } | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }

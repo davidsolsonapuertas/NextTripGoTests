@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { client } from '../ApolloProvider';
 import { IUser } from '../Interfaces/User';
 
+
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
@@ -39,8 +40,8 @@ if (localStorage.getItem('jwtToken')) {
 
 const AuthContext = createContext<IUser>({
   user: null,
-  login: (userData: User) => {},
-  logout: () => {},
+  login: (userData: User) => { },
+  logout: () => { },
 });
 
 function authReducer(state: object, action: ActionTypes) {
