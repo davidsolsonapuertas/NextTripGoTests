@@ -13,7 +13,7 @@ import UserTripcards from '../../Components/TripCards/TripCards';
 import ProfilePicture from '../../Components/UserProfileActions/ProfilePicture';
 
 interface IUser {
-  user: any;
+  user: {id: string} | null;
   login: (userData: User) => void;
   logout: () => void;
 }
@@ -28,7 +28,7 @@ function Profile() {
   const { user } = useContext<IUser>(AuthContext);
 
   const { data: dataLoggedUser } = useQuery(GET_LOGGED_USER, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
     pollInterval: 2000,
   });
   let loggedUser = dataLoggedUser?.getLoggedUser;

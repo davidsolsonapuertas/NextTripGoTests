@@ -30,7 +30,7 @@ export interface LoggedUser {
 }
 
 export interface IUser {
-  user: {id: number} | null;
+  user: {id: string} | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }

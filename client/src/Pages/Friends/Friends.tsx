@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/Auth';
 import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 
 interface IUser {
-  user: any;
+  user: {id: string} | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }

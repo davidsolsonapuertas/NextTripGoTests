@@ -22,7 +22,7 @@ interface IProps {
 }
 
 interface IUser {
-  user: any;
+  user: {id: string} | null;
   login: (userData: User) => void;
   logout: () => void;
 }
@@ -43,7 +43,7 @@ function UserProfile() {
   });
 
   const { data: dataLoggedUser } = useQuery(GET_LOGGED_USER, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
   });
 
   let userVisited = dataUserVisited?.getUser;

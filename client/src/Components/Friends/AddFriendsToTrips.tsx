@@ -7,7 +7,7 @@ import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import Search from '../../Pages/Search/Search';
 
 interface IUser {
-  user: {id: number} | null;
+  user: {id: string} | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }
