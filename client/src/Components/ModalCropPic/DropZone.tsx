@@ -10,8 +10,8 @@ interface IProps {
 }
 
 function DropZone({ children }: IProps) {
-  const [showModal, setShowModal] = useState(false);
-  const [draft, setDraft]: any = useState();
+  const [showModal, setShowModal]= useState<boolean>(false);
+  const [draft, setDraft]= useState<string>('');
 
   // const toggleModal = () => {
   //   setShowModal((state) => !state);

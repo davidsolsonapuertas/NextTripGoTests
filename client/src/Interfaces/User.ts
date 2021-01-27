@@ -30,11 +30,15 @@ export interface LoggedUser {
 }
 
 export interface IUser {
+<<<<<<< HEAD
   user: {
     id: number,
     username: string,
     profilePic: string
   } | null;
+=======
+  user: {id: string} | null;
+>>>>>>> f1ee5f359d4dcd2d2586d8362d1730e8e4629c48
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }
