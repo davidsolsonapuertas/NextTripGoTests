@@ -19,7 +19,7 @@ describe('Register', () => {
 
   it('should render warn the user when form input is invalid', async () => {
     render(<MockedProvider><App history={history} /></MockedProvider>);
-    await fireEvent.click(screen.getByText(/Create/i), leftClick);
-    expect(screen.getByText('Password must not be empty')).toBeInTheDocument();
+    await fireEvent.click(screen.getByRole('button', {name: /Create/i}), leftClick);
+    expect(screen.getByRole('ul')).toBeInTheDocument();
   })
 })

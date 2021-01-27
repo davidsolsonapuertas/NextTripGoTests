@@ -10,8 +10,14 @@ type AppProps = {
   setPhoto: Dispatch<SetStateAction<string>>;
 };
 
+interface IPhoto {
+  src: {
+    medium: string,
+  }
+}
+
 function DestinationPhotos({ destination, setPhoto }: AppProps) {
-  const [photos, setPhotos]: any = useState({});
+  const [photos, setPhotos] = useState<IPhoto[]>();
 
   const getPhotos = async (destination: string) => {
     if (typeof destination !== 'undefined') {
@@ -45,8 +51,8 @@ function DestinationPhotos({ destination, setPhoto }: AppProps) {
       <fieldset>
         {destination &&
           destination.length > 1 &&
-          (photos.length > 1 ? (
-            photos.map((photo: any) => (
+          (photos && photos.length > 1 ? (
+            photos?.map((photo: IPhoto) => (
               <div key={photo.src.medium} className="cc-selector">
                 <input
                   id={photo.src.medium}

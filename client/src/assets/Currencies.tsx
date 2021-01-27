@@ -1,4 +1,8 @@
-export const currencies: any = {
+interface ICurrencies<TValue> {
+  [key: string]: TValue
+}
+
+export const currencies: ICurrencies<string> = {
   AED: 'United Arab Emirates Dirham',
   AFN: 'Afghan Afghani',
   ALL: 'Albanian Lek',

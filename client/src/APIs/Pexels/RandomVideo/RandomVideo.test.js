@@ -1,9 +1,5 @@
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MockedProvider } from "@apollo/client/testing";
+import { render, screen, waitFor } from '@testing-library/react';
 import RandomVideo from './RandomVideo.tsx';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 
 import axios from 'axios';
 

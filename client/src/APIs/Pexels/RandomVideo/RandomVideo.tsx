@@ -4,8 +4,14 @@ import axios from 'axios';
 import '../pexels.css';
 import { PexelKey } from '../../../config';
 
+interface IVideos {
+  video_files: {
+    link: string
+  }[]
+}
+
 function RandomVideo() {
-  const [videos, setVideos]: any[] = useState([]);
+  const [videos, setVideos] = useState<IVideos[]>([]);
 
   const getVideos = async () => {
     try {
