@@ -5,20 +5,10 @@ import Avatar from '@material-ui/core/Avatar';
 import { AuthContext } from '../../Context/Auth';
 import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import Search from '../../Pages/Search/Search';
+import { IUser } from '../../Interfaces/User'
 
-interface IUser {
-  user: {id: string} | null;
-  login: (userData: LoggedUser) => void;
-  logout: () => void;
-}
 
-interface LoggedUser {
-  username: string;
-  password: string;
-  token: string;
-}
-
-function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: {selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>>}) {
+function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: { selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>> }) {
   const { user } = useContext<IUser>(AuthContext);
   const [suggestionValue, setSuggestionValue] = useState<string | null>(null);
 

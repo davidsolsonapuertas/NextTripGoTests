@@ -7,7 +7,11 @@ import { User } from '../../Interfaces/User';
 import DropZone from '../ModalCropPic/DropZone';
 
 interface IUser {
-  user: any;
+  user: {
+    id: string,
+    username: string,
+    profilePic: string
+  } | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }

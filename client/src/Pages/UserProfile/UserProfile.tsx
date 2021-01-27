@@ -16,22 +16,12 @@ import Profile from '../../Pages/Profile/Profile';
 import UserTripcards from '../../Components/TripCards/TripCards';
 import MapCoordinates from '../../APIs/GoogleMaps/MapCoordinates';
 import UserProfileFriendButton from '../../Components/UserProfileActions/UserProfileFriendButton';
+import { IUser } from '../../Interfaces/User'
 
 interface IProps {
   id: string;
 }
 
-interface IUser {
-  user: {id: string} | null;
-  login: (userData: User) => void;
-  logout: () => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  token: string;
-}
 
 function UserProfile() {
   let { id } = useParams<IProps>();
@@ -60,8 +50,8 @@ function UserProfile() {
             {userVisited?.trips.length > 0 ? (
               <UserTripcards trips={userVisited?.trips} time="" mode="Users" />
             ) : (
-              <p>This user has no trips</p>
-            )}
+                <p>This user has no trips</p>
+              )}
           </div>
           <div className="profile-pic ">
             <div className="mx-25">
@@ -107,18 +97,18 @@ function UserProfile() {
               />
             </div>
           ) : (
-            ''
-          )}
+              ''
+            )}
           <UserProfileFriendButton
             userVisited={userVisited}
             userVisiting={userVisiting}
           />
         </div>
       ) : (
-        <div>
-          <Profile />
-        </div>
-      )}
+          <div>
+            <Profile />
+          </div>
+        )}
     </div>
   );
 }

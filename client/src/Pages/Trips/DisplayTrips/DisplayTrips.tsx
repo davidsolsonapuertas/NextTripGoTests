@@ -7,18 +7,8 @@ import FlightTakeoffRoundedIcon from '@material-ui/icons/FlightTakeoffRounded';
 import TripCards from '../../../Components/TripCards/TripCards';
 import { AuthContext } from '../../../Context/Auth';
 import { FETCH_TRIPS_BY_USERNAME } from '../../../services/Trips/TripsQuery';
+import { IUser } from '../../../Interfaces/User'
 
-interface IUser {
-  user: any;
-  login: (userData: User) => void;
-  logout: () => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  token: string;
-}
 
 function DisplayTrips() {
   const { user } = useContext<IUser>(AuthContext);
@@ -26,7 +16,7 @@ function DisplayTrips() {
   console.log(hash);
 
   let { data } = useQuery(FETCH_TRIPS_BY_USERNAME, {
-    variables: { userId: user.id },
+    variables: { userId: user?.id },
   });
 
   let trips = data?.getTripsByUsername;
@@ -51,21 +41,21 @@ function DisplayTrips() {
         hash === '#past' ? (
           <TripCards trips={trips} time={'past'} mode="My" />
         ) : (
-          <TripCards trips={trips} time={'upcoming'} mode="My" />
-        )
+            <TripCards trips={trips} time={'upcoming'} mode="My" />
+          )
       ) : (
-        <div className="d-flex w-100 mt-5 flex-column align-items-center justify-content-center">
-          <p className="mb-5">You don't have any trips.</p>
-          <Link to="/createTrip">
-            <button className="btn btn-primary btn-icon-split">
-              <span className="icon text-white-50">
-                <FlightTakeoffRoundedIcon />
-              </span>
-              <span className="text">Create trip</span>
-            </button>
-          </Link>
-        </div>
-      )}
+          <div className="d-flex w-100 mt-5 flex-column align-items-center justify-content-center">
+            <p className="mb-5">You don't have any trips.</p>
+            <Link to="/createTrip">
+              <button className="btn btn-primary btn-icon-split">
+                <span className="icon text-white-50">
+                  <FlightTakeoffRoundedIcon />
+                </span>
+                <span className="text">Create trip</span>
+              </button>
+            </Link>
+          </div>
+        )}
     </div>
   );
 }

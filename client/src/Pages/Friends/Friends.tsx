@@ -4,18 +4,19 @@ import { useQuery } from '@apollo/client';
 import FriendCards from '../../Components/FriendCards/FriendCards';
 import { AuthContext } from '../../Context/Auth';
 import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
+import { IUser } from '../../Interfaces/User'
 
-interface IUser {
-  user: {id: string} | null;
-  login: (userData: LoggedUser) => void;
-  logout: () => void;
-}
+// interface IUser {
+//   user: {id: string} | null;
+//   login: (userData: LoggedUser) => void;
+//   logout: () => void;
+// }
 
-interface LoggedUser {
-  username: string;
-  password: string;
-  token: string;
-}
+// interface LoggedUser {
+//   username: string;
+//   password: string;
+//   token: string;
+// }
 
 function Friends() {
   const { user } = useContext<IUser>(AuthContext);

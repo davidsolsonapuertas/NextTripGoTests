@@ -6,18 +6,8 @@ import './privateroute.css';
 
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import Topbar from '../../Components/Topbar/Topbar';
+import { IUser } from '../../Interfaces/User'
 
-interface IUser {
-  user: {id: string} | null;
-  login: (userData: User) => void;
-  logout: () => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  token: string;
-}
 
 interface IProps {
   children: JSX.Element,
@@ -27,7 +17,7 @@ interface IProps {
 
 function PrivateRoute({ children, ...rest }: IProps) {
   const { user } = useContext<IUser>(AuthContext);
-  const [sidebar, setSidebar]= useState<boolean>(true);
+  const [sidebar, setSidebar] = useState<boolean>(true);
 
   return (
     <Route
@@ -46,13 +36,13 @@ function PrivateRoute({ children, ...rest }: IProps) {
             </div>
           </div>
         ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: location },
+              }}
+            />
+          )
       }
     />
   );
