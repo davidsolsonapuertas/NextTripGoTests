@@ -13,6 +13,7 @@ interface IProps {
   setSidebar: Dispatch<SetStateAction<boolean>>;
 }
 
+
 function Sidebar({ sidebar, setSidebar }: IProps) {
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -34,8 +35,8 @@ function Sidebar({ sidebar, setSidebar }: IProps) {
           <Link to="/">
             <img alt="logo" className="trip-logo" width="90%" src={Logo} />
           </Link>
-          {routes.map((item, index) => {
-            return <SubMenu item={item} key={index} />;
+          {routes.map((element, index) => {
+            return <SubMenu item={element} key={index} />;
           })}
         </div>
       </div>

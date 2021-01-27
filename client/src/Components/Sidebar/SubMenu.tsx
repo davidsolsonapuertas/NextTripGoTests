@@ -9,7 +9,11 @@ interface IProps {
     title: string;
     path: string;
     icon: JSX.Element;
-    subNav?: object[];
+    subNav?: {
+      title: string;
+      path: string;
+      icon: JSX.Element | string;
+    }[];
   }
 }
 
@@ -55,14 +59,14 @@ function SubMenu({ item }: IProps) {
         )}
       {subnav && item.subNav && (
         <div className="bg-white mx-4 collapse-inner rounded">
-          {item.subNav.map((item: any, index: number) => {
+          {item.subNav.map((element, index) => {
             return (
               <Link
                 key={index}
                 className="submenu-dropdown-link mx-1"
-                to={item.path}
+                to={element.path}
               >
-                <span className="submenu-label override">{item.title}</span>
+                <span className="submenu-label override">{element.title}</span>
               </Link>
             );
           })}
