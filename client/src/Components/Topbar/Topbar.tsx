@@ -23,9 +23,9 @@ interface IProps {
 
 interface IUser {
   user: {
-    id: number,
+    id: string,
     username: string,
-    profilePic: string,
+    profilePic: string
   } | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
@@ -39,7 +39,7 @@ interface LoggedUser {
 
 function Topbar({ setSidebar }: IProps) {
   const [open, setOpen] = useState(true);
-  const [suggestionValue, setSuggestionValue] = useState('');
+  const [suggestionValue, setSuggestionValue] = useState<string | null>('');
   const { logout, user } = useContext<IUser>(AuthContext);
   const history = useHistory();
 
@@ -54,7 +54,7 @@ function Topbar({ setSidebar }: IProps) {
   const loggedUser = dataLoggedUser?.getLoggedUser;
 
   useMemo(() => {
-    if (suggestionValue.length > 1) {
+    if (suggestionValue) {
       history.push('/user/' + suggestionValue);
     }
   }, [suggestionValue, history]);

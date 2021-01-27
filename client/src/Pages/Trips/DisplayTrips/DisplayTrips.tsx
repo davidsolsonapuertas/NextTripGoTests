@@ -7,23 +7,11 @@ import FlightTakeoffRoundedIcon from '@material-ui/icons/FlightTakeoffRounded';
 import TripCards from '../../../Components/TripCards/TripCards';
 import { AuthContext } from '../../../Context/Auth';
 import { FETCH_TRIPS_BY_USERNAME } from '../../../services/Trips/TripsQuery';
+import { IUser } from '../../../Interfaces/User'
 
-interface IUser {
-  user?: {
-    id: string
-  };
-  login: (userData: User) => void;
-  logout: () => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  token: string;
-}
 
 function DisplayTrips() {
-  const { user } = useContext<IUser>(AuthContext); //*ERROR!
+  const { user } = useContext<IUser>(AuthContext);
   let { pathname, hash }: any = useLocation();
   console.log(hash);
 

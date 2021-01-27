@@ -1,8 +1,21 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Expense } from '../../Interfaces/Trip';
 
 
-function ValidateAmount({ amount, setAmount, index, expenses, errors }: { amount: string[], setAmount: Dispatch<SetStateAction<string[]>>, index: number, expenses: Expense[], errors: {expensestype: string}}) {
+function ValidateAmount({ amount, setAmount, index, expenses, errors }: {
+  amount: string[],
+  setAmount: Dispatch<SetStateAction<string[]>>,
+  index: number,
+  expenses: Expense[],
+  errors: {
+    expensestype?: string,
+    destination?: {
+      formattedAddress: string[],
+      latitude: string[],
+      longitude: string[],
+    },
+  }
+}) {
   const formatNumber = (n: string) => {
     return n.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };

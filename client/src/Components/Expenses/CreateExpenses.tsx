@@ -13,7 +13,12 @@ interface IProps {
   expenses: Expenses;
   setExpenses: Dispatch<SetStateAction<Expenses>>;
   errors: {
-    expensestype: string
+    expensestype?: string
+    destination?: {
+      formattedAddress: string[],
+      latitude: string[],
+      longitude: string[],
+    },
   }; //* changed errors type
 }
 
@@ -34,7 +39,7 @@ function ExpensesComponent({ expenses, setExpenses, errors }: IProps) {
     setExpenses(values);
   };
 
-  const handleInputChange = (index: number, e?: {target: {name: string, value: string}}) => { //* changed target type 
+  const handleInputChange = (index: number, e?: { target: { name: string, value: string } }) => { //* changed target type
     const values = [...expenses];
     if (e?.target.name === 'type') {
       values[index].type = e.target.value;

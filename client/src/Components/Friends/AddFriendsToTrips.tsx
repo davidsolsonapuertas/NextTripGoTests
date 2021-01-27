@@ -5,30 +5,12 @@ import Avatar from '@material-ui/core/Avatar';
 import { AuthContext } from '../../Context/Auth';
 import { GET_LOGGED_USER } from '../../services/Users/UsersQuery';
 import Search from '../../Pages/Search/Search';
+import { IUser } from '../../Interfaces/User'
 
-interface IUser {
-<<<<<<< HEAD
-  user: {
-    id: number,
-    username: string,
-    profilePic: string
-  } | null;
-=======
-  user: {id: string} | null;
->>>>>>> f1ee5f359d4dcd2d2586d8362d1730e8e4629c48
-  login: (userData: LoggedUser) => void;
-  logout: () => void;
-}
-
-interface LoggedUser {
-  username: string;
-  password: string;
-  token: string;
-}
 
 function AddFriendsToTrips({ selectedFriends, setSelectedFriends }: { selectedFriends: string[], setSelectedFriends: Dispatch<SetStateAction<string[]>> }) {
   const { user } = useContext<IUser>(AuthContext);
-  const [suggestionValue, setSuggestionValue] = useState<string>('');
+  const [suggestionValue, setSuggestionValue] = useState<string | null>(null);
 
   useMemo(() => {
     if (suggestionValue !== null) {

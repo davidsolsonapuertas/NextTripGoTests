@@ -11,18 +11,8 @@ import MapCoordinates from '../../APIs/GoogleMaps/MapCoordinates';
 import { AuthContext } from '../../Context/Auth';
 import UserTripcards from '../../Components/TripCards/TripCards';
 import ProfilePicture from '../../Components/UserProfileActions/ProfilePicture';
+import { IUser } from '../../Interfaces/User'
 
-interface IUser {
-  user: {id: string} | null;
-  login: (userData: User) => void;
-  logout: () => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  token: string;
-}
 
 function Profile() {
   const { user } = useContext<IUser>(AuthContext);
@@ -40,18 +30,18 @@ function Profile() {
           {loggedUser?.trips.length > 0 ? (
             <UserTripcards trips={loggedUser?.trips} time="" mode="Me" />
           ) : (
-            <div>
-              <p>You don't have any trips.</p>
-              <Link to="/createTrip">
-                <button className="btn btn-primary btn-icon-split">
-                  <span className="icon text-white-50">
-                    <FlightTakeoffRoundedIcon />
-                  </span>
-                  <span className="text">Create trip</span>
-                </button>
-              </Link>
-            </div>
-          )}
+              <div>
+                <p>You don't have any trips.</p>
+                <Link to="/createTrip">
+                  <button className="btn btn-primary btn-icon-split">
+                    <span className="icon text-white-50">
+                      <FlightTakeoffRoundedIcon />
+                    </span>
+                    <span className="text">Create trip</span>
+                  </button>
+                </Link>
+              </div>
+            )}
         </div>
         <div className="profile-pic d-flex flex-column justify-content-center">
           <div className="mx-25">
@@ -97,8 +87,8 @@ function Profile() {
             />
           </div>
         ) : (
-          ''
-        )}
+            ''
+          )}
       </div>
     </div>
   );

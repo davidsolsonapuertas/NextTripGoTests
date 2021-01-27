@@ -25,8 +25,10 @@ interface Friends {
 
 interface IProps {
   dataToSearch: [];
-  setSuggestionValue: Dispatch<SetStateAction<string>>;
+  setSuggestionValue: Dispatch<SetStateAction<string | null>>
 }
+
+//* Dispatch<SetStateAction<string>>;
 
 function Search({ dataToSearch, setSuggestionValue }: IProps) {
   const [selected, setSelected] = useState('');

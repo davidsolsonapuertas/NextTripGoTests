@@ -8,10 +8,10 @@ import DropZone from '../ModalCropPic/DropZone';
 
 interface IUser {
   user: {
-    id: number,
+    id: string,
     username: string,
-    profilePic: string,
-  } | null
+    profilePic: string
+  } | null;
   login: (userData: LoggedUser) => void;
   logout: () => void;
 }

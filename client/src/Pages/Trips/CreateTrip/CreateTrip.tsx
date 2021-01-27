@@ -12,7 +12,7 @@ import { Expense, } from '../../../Interfaces/Trip'
 
 
 interface IErrors {
-  expensestype: string;
+  expensestype?: string;
   destination?: {
     formattedAddress: string[],
     latitude: string[],
@@ -29,7 +29,7 @@ interface IRanges {
 function CreateTrip() {
   let history = useHistory();
 
-  const [errors, setErrors] = useState<IErrors>({ expensestype: '' });
+  const [errors, setErrors] = useState<IErrors>({});
 
   const [formattedAddress, setFormatedAddress] = useState<string[]>(['', '', '']);
   const [photo, setPhoto] = useState<string>('');
@@ -69,7 +69,7 @@ function CreateTrip() {
       history.go(0);
     },
     onError(err) {
-      setErrors((errors: any) => {
+      setErrors((errors: object) => {
         return err?.graphQLErrors[0]?.extensions?.exception.errors;
       });
     },
@@ -86,7 +86,7 @@ function CreateTrip() {
             setFormatedAddress={setFormatedAddress}
             placeholder={"What's your next destination? ✈"}
             styles={
-              errors.destination
+              errors?.destination
                 ? 'form-control form-control-user errorRed w-50'
                 : 'form-control form-control-user w-50'
             }
