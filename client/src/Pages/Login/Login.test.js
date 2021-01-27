@@ -17,12 +17,10 @@ jest.mock('../../util/Hooks.tsx', () => {
   }}
 })
 
-// window.HTMLFormElement.prototype.submit = () => {};
-
 describe('Login', () => {
-  const history = createMemoryHistory();
   it('should render title "Welcome Back!"', () => {
-    render(<Router history={history}><MockedProvider><Login /></MockedProvider></Router>);
+    // render(<Router history={history}><MockedProvider><Login /></MockedProvider></Router>);
+    render(<MockedProvider><App/></MockedProvider>);
     const message = screen.getByText('Welcome back!');
     expect(message).toBeInTheDocument();
   })
@@ -45,7 +43,6 @@ describe('Login', () => {
     fireEvent.change(getByPlaceholderText(/username/i), userName);
     fireEvent.change(getByPlaceholderText(/password/i), password);
 
-    // fireEvent.click(getByText(/Login/i), leftClick);
     fireEvent.submit(getByTestId('submit-form'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
   })
