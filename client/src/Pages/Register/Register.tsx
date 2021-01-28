@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, FormEventHandler } from 'react';
 import { useMutation } from '@apollo/client';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -24,8 +24,11 @@ function Register() {
 
   const context = useContext(AuthContext);
 
-
-  const { onChange, onSubmit, values }: any = useForm(registerUser, {
+  const { onChange, onSubmit, values }: {
+    onChange: FormEventHandler<Element>,
+    onSubmit: FormEventHandler<Element>,
+    values: IErrors
+  } = useForm(registerUser, {
     firstname: '',
     lastname: '',
     username: '',

@@ -8,7 +8,7 @@ export interface User extends Document {
   username: string;
   currentCity: Destination;
   profilePic: string;
-  friends: Types.ObjectId[];
+  friends: User[];
   sentFriendRequests: string[];
   receivedFriendRequests: string[];
   trips: Trip[];

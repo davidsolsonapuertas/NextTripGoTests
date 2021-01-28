@@ -64,7 +64,7 @@ function CreateTrip() {
       friends: friends,
       // toDo: values.toDo,
     },
-    update(proxy: any, result) {
+    update(proxy, result) {
       history.push(`/trips/${result.data.createTrip.id}`);
       history.go(0);
     },

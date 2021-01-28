@@ -22,6 +22,7 @@ interface IProps {
   userVisiting: User;
 }
 
+
 function UserProfileFriendButton({ userVisited, userVisiting }: IProps) {
   const [sendFriendRequest] = useMutation(SEND_FRIEND_REQUEST, {
     variables: { to: userVisited?.username },
@@ -101,7 +102,7 @@ function UserProfileFriendButton({ userVisited, userVisiting }: IProps) {
   return (
     <div className="Button w-100 h-50 d-flex justify-content-center">
       {typeof userVisiting?.friends?.find(
-        (friend: any) => friend?.id === userVisited?.id
+        (friend: User) => friend?.id === userVisited?.id
       ) === 'undefined' &&
         userVisiting?.sentFriendRequests?.indexOf(userVisited?.id) === -1 &&
         userVisiting?.receivedFriendRequests?.indexOf(userVisited?.id) ===
