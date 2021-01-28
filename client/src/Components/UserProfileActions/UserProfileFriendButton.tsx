@@ -137,7 +137,7 @@ function UserProfileFriendButton({ userVisited, userVisiting }: IProps) {
         </DropdownButton>
       )}
       {typeof userVisiting?.friends?.find(
-        (friend: any) => friend?.id === userVisited?.id
+        (friend: User) => friend?.id === userVisited?.id
       ) !== 'undefined' && (
           <DropdownButton id="dropdown-basic-button" title="Friends">
             <Dropdown.Item onClick={deleteFriendCallback}>Unfriend</Dropdown.Item>
