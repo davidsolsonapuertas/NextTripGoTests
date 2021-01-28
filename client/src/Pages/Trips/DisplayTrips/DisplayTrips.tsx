@@ -12,7 +12,7 @@ import { IUser } from '../../../Interfaces/User'
 
 function DisplayTrips() {
   const { user } = useContext<IUser>(AuthContext);
-  let { pathname, hash }: any = useLocation();
+  let { pathname, hash } = useLocation<string>();
   console.log(hash);
 
   let { data } = useQuery(FETCH_TRIPS_BY_USERNAME, {
